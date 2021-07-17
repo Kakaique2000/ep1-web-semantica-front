@@ -1,0 +1,22 @@
+<div *ngIf="lojas$ | async as lojas">
+  <div class="rounded-full bg-white p-4 mx-auto shadow w-max" *ngIf="lojas.loading">
+    <mat-spinner [diameter]="50"> </mat-spinner>
+  </div>
+
+  <div class="flex items-stretch justify-center flex-wrap" *ngIf="lojas.isLoaded">
+    <article class="shadow flex flex-col  w-80 mr-4 mb-4 bg-white rounded max-w-sm" *ngFor="let loja of lojas.data!">
+      <div class="flex p-3 items-center ">
+        <img class="rounded-full w-20 h-20" [src]="loja.fotoUrl" alt="[loja].nome" />
+        <span class="text-3xl font-bold ml-5">{{ loja.nome }}</span>
+      </div>
+
+      <div class="p-3 flex-1 px-6 border-b border-gray-200">
+        <p class="font-bold">{{ loja.atividade }}</p>
+        <p class="mt-4 text-sm overflow-ellipsis overflow-y-hidden max-h-28">{{ loja.descricao }}</p>
+      </div>
+      <div class="p-3 flex">
+        <a class="ml-auto text-blue-700 underline" target="_blank" [href]="loja.uri">ir para website</a>
+      </div>
+    </article>
+  </div>
+</div>
