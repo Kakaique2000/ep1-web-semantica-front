@@ -1,0 +1,22 @@
+<div *ngIf="produtos$ | async as produtos">
+  <div class="rounded-full bg-white p-4 mx-auto shadow w-max" *ngIf="produtos.loading">
+    <mat-spinner [diameter]="50"> </mat-spinner>
+  </div>
+
+  <div class="flex items-stretch justify-start flex-wrap" *ngIf="produtos.isLoaded">
+    <article class="p-5 hover:shadow-xl  shadow flex flex-col w-64 h-96 mr-4 mb-4 bg-white rounded max-w-sm" *ngFor="let produto of produtos.data!">
+
+        <img class="self-center w-auto h-36" [src]="produto.fotoUrl" [alt]="produto.nome" />
+
+        <div class="flex-1 flex flex-col">
+          <span class="text-xs mt-4 font-bold">{{ produto.categoria }}</span>
+          <span class="text-base mt-3">{{ produto.nome }}</span>
+          <span class="text-xl font-bold">{{ produto.preco | currency:'BRL' }}</span>
+        </div>
+        <div class="p-3 flex self-end">
+          <a href="javascript:null" (click)="adicionarCarrinho(produto)" class="ml-auto text-blue-700 underline">+ Adicionar ao carrinho</a>
+        </div>
+
+    </article>
+  </div>
+</div>

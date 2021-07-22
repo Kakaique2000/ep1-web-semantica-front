@@ -1,0 +1,27 @@
+<div *ngIf="itens$ | async as itens" class="bg-white rounded shadow-2xl border border-gray-300">
+  <header class="w-full p-3"><strong>Carrinho</strong><br> Seus itens adicionados ({{ itens.length }}) </header>
+  <ul class="overflow-y-auto max-h-60">
+    <li *ngFor="let item of itens" class="flex items-center hover:bg-gray-100 justify-between py-5 px-3">
+      <div class="flex items-center">
+        <img [src]="item.fotoUrl" [alt]="item.nome" class="h-auto w-8">
+        <span class="ml-2 w-40 ">{{ item.nome }}</span>
+      </div>
+
+      <div class="flex items-center">
+        <div class="mx-4 rounded flex items-stretch bg-white border border-gray-300">
+          <button [disabled]="(item.quantidade || 1) === 1" class="font-bold text-blue-500 disabled:pointer-events-none disabled:text-gray-500 flex-1 p-2 hover:bg-gray-100" (click)="atualizaItem((item.quantidade || 1) - 1, item)" href="javascript:null">-</button>
+          <div class="flex-1 p-2 text-center"><span >{{ item.quantidade || 1 }}</span></div>
+          <button class="font-bold text-blue-500 flex-1 p-2 hover:bg-gray-100" (click)="atualizaItem((item.quantidade || 1) + 1, item)" href="javascript:null">+</button>
+        </div>
+        <span class="font-bold w-20 text-right">{{ item.preco | currency:'BRL' }}</span>
+        <mat-icon class="ml-3 cursor-pointer text-red-900" (click)="removerItem(item)">close</mat-icon>
+      </div>
+    </li>
+  </ul>
+  <footer *ngIf="itens.length">
+    <div class="flex items-center justify-between p-3 border-t border-gray-100">
+      <span class="underline text-blue-700 hover:text-blue-900 cursor-pointer">finalizar compra</span>
+      <span class="text-xl font-bold">Total: {{ precoTotal$ | async | currency:'BRL' }} </span>
+    </div>
+</footer>
+</div>

@@ -1,0 +1,20 @@
+ul {
+  width: 30rem;
+
+  &::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+   }
+
+   &::-webkit-scrollbar-thumb {
+    background-color: rgb(214, 214, 214);
+    border-radius: 3px;
+
+    &:hover {
+     background: rgb(190, 190, 190);
+    }
+   }
+}
+
+
+

@@ -35,11 +35,11 @@
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Lojas</a>
+            <a routerLink="/lojas" #rlaLojas="routerLinkActive" [ngClass]="{ 'pointer-events-none': rlaLojas.isActive, 'text-white': rlaLojas.isActive, 'text-gray-300': !rlaLojas.isActive  }" [routerLinkActive]="['bg-gray-900', 'text-white']"  class="hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Lojas</a>
 
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Produtos</a>
+            <a routerLink="/produtos" #rlaProdutos="routerLinkActive" [ngClass]="{ 'pointer-events-none': rlaProdutos.isActive, 'text-white': rlaProdutos.isActive, 'text-gray-300': !rlaProdutos.isActive   }" [routerLinkActive]="['bg-gray-900', 'text-white']" class="hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Produtos</a>
 
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">A equipe</a>
+            <a routerLink="/equipe" #rlaEquipe="routerLinkActive" [ngClass]="{ 'pointer-events-none': rlaEquipe.isActive, 'text-white': rlaEquipe.isActive, 'text-gray-300': !rlaEquipe.isActive   }" [routerLinkActive]="['bg-gray-900', 'text-white']" class="hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">A equipe</a>
 
           </div>
         </div>

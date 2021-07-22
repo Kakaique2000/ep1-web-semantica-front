@@ -4,7 +4,7 @@
   </div>
 
   <div class="flex items-stretch justify-center flex-wrap" *ngIf="lojas.isLoaded">
-    <article class="shadow flex flex-col  w-80 mr-4 mb-4 bg-white rounded max-w-sm" *ngFor="let loja of lojas.data!">
+    <article class="shadow hover:shadow-xl flex flex-col  w-80 mr-4 mb-4 bg-white rounded max-w-sm" *ngFor="let loja of lojas.data!">
       <div class="flex p-3 items-center ">
         <img class="rounded-full w-20 h-20" [src]="loja.fotoUrl" alt="[loja].nome" />
         <span class="text-3xl font-bold ml-5">{{ loja.nome }}</span>

@@ -12,10 +12,18 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatIconModule} from '@angular/material/icon';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { LojasPageComponent } from './pages/lojas-page/lojas-page.component';
 import { LojasPageListaComponent } from './pages/lojas-page/lojas-page-lista/lojas-page-lista.component';
+import { ProdutosPageComponent } from './pages/produtos-page/produtos-page.component';
+import { ProdutosPageListaComponent } from './pages/produtos-page-lista/produtos-page-lista.component';
+import { CarrinhoComponent } from './components/carrinho/carrinho.component';
+import { appReducer } from './store/state/app-state';
+import { FormsModule } from '@angular/forms';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 
 
@@ -26,6 +34,9 @@ import { LojasPageListaComponent } from './pages/lojas-page/lojas-page-lista/loj
     ToolbarComponent,
     LojasPageComponent,
     LojasPageListaComponent,
+    ProdutosPageComponent,
+    ProdutosPageListaComponent,
+    CarrinhoComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,10 +45,13 @@ import { LojasPageListaComponent } from './pages/lojas-page/lojas-page-lista/loj
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
+    FormsModule,
     MatInputModule,
+    MatIconModule,
     HttpClientModule,
     MatProgressSpinnerModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({app: appReducer}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
