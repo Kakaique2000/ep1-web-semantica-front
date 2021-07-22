@@ -15,18 +15,18 @@ export class ProdutoService {
     return getModelStateObservable(of(
       [
         {
-          nome: 'Extra',
-          categoria: 'Mercado varejista em geral',
-          uri: 'https://www.extra.com.br/',
-          fotoUrl: 'https://skyhub.com.br/wp-content/uploads/2017/09/como-vender-no-extra.png',
+          nome: 'Tenis Kichute Original lindo demais',
+          categoria: 'moda e vestimenta',
+          uri: 'https://http2.mlstatic.com/D_NQ_NP_860763-MLB31658760704_082019-O.jpg/',
+          fotoUrl: 'https://http2.mlstatic.com/D_NQ_NP_860763-MLB31658760704_082019-O.jpg',
           descricao: 'Extra é uma rede varejista brasileira, formada por lojas multiformato, que incluem supermercados, hipermercados e minimercados operados pela Multivarejo, divisão do GPA que também opera os supermercados da rede premium Pão de Açúcar.',
-          preco: 299.90
+          preco: 179.90
         },
         {
-          nome: 'Zelo',
-          categoria: 'Cama mesa e banho',
+          nome: 'Relógio do Corinthians analógico',
+          categoria: 'moda e vestimenta',
           uri: 'https://www.extra.com.br/1',
-          fotoUrl: 'https://www.zelo.com.br/Custom/Content/Themes/Shared/Images/og-image.jpg',
+          fotoUrl:  'https://static.netshoes.com.br/produtos/relogio-corinthians-technos-analogico-masculino/26/F61-1611-026/F61-1611-026_zoom1.jpg?ts=1611346666&ims=544x',
           descricao: 'A Zelo é uma das maiores redes especializadas em cama, mesa e banho do Brasil, operados pela Multivarejo, divisão do GPA que também opera os supermercados da rede premium Pão de Açúcar.',
           preco: 99.90
         },
@@ -39,12 +39,12 @@ export class ProdutoService {
           preco: 199.90
         },
         {
-          nome: 'Nike',
-          categoria: 'Roupas e Tenis bregas',
+          nome: 'Salgadinho Lobitz sabor churrasco',
+          categoria: 'Comida',
           uri: 'https://www.extra.com.br/3',
-          fotoUrl: 'https://conteudo.imguol.com.br/c/noticias/69/2017/06/05/logo-da-nike-1496688780234_v2_450x450.png',
+          fotoUrl: 'https://a-static.mlcdn.com.br/574x431/salgadinho-de-milho-sabor-churrarsco-50g-lobits/funchalfestas/1550360/09f6e4aa70b12c8de381ac3b57ce5db7.jpg',
           descricao: 'Nike, Inc. é uma empresa estadunidense de calçados, roupas, e acessórios fundada em 1972 por Bill Bowerman e Phillip Knight.',
-          preco: 59.90
+          preco: 7.49
         },
       ]
     ).pipe(delay(1000)))

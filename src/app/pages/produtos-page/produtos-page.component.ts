@@ -10,7 +10,7 @@ export class ProdutosPageComponent implements OnInit {
 
   constructor(private produtoService: ProdutoService) { }
 
-  searchSelected: 'nome' | 'atividade' = 'nome'
+  searchSelected: 'nome' | 'categoria' = 'nome'
 
   produtos$ = this.produtoService.getProdutos();
 

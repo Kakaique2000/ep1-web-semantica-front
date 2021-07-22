@@ -1,6 +1,9 @@
 <div *ngIf="itens$ | async as itens" class="bg-white rounded shadow-2xl border border-gray-300">
-  <header class="w-full p-3"><strong>Carrinho</strong><br> Seus itens adicionados ({{ itens.length }}) </header>
-  <ul class="overflow-y-auto max-h-60">
+  <header class="w-full flex justify-between p-3">
+    <span><strong>Carrinho</strong><br> Seus itens adicionados ({{ itens.length }})</span>
+    <mat-icon (click)="mostrarCarrinho = !mostrarCarrinho" *ngIf="itens.length" class="cursor-pointer">{{ mostrarCarrinho ? 'expand_more' : 'expand_less' }}</mat-icon>
+  </header>
+  <ul *ngIf="mostrarCarrinho" class="overflow-y-auto max-h-60">
     <li *ngFor="let item of itens" class="flex items-center hover:bg-gray-100 justify-between py-5 px-3">
       <div class="flex items-center">
         <img [src]="item.fotoUrl" [alt]="item.nome" class="h-auto w-8">

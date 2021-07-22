@@ -15,6 +15,8 @@ export class CarrinhoComponent implements OnInit {
 
   constructor(public store: Store<{ app: AppState }>) { }
 
+  mostrarCarrinho = true;
+
   itens$ = this.store.select(({ app }) => app.carrinho);
 
   precoTotal$ = this.itens$.pipe(
