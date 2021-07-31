@@ -17,6 +17,8 @@
       <span class="text-3xl text-white">Lojas do Shopping Haroldo</span>
       <div class="flex mt-3 items-end flex-wrap">
         <input
+          (keyup.enter)="pesquisarLoja(searchInput.value)"
+          #searchInput
           placeholder="pesquise sua loja favorita"
           class="
             inline
@@ -34,6 +36,7 @@
         />
         <section>
           <button
+          (click)="pesquisarLoja(searchInput.value)"
           style="height: 42px;"
             class="flex-1 mr-6 border border-l-0 rounded rounded-l-none mt-4 active:bg-black hover:bg-gray-600 p-2 px-3 border-gray-500
             text-white"
@@ -42,7 +45,7 @@
           </button>
       </section>
         <section class="mt-4">
-          <p class="text-white">pesquisar por:</p>
+          <p class="text-white">ordenar por:</p>
           <div
             class="
               w-80
@@ -55,14 +58,14 @@
           >
             <button
               class="flex-1 p-2 border-r"
-              (click)="searchSelected = 'nome'"
+              (click)="searchSelected = 'nome'; ordenarChange()"
               [class.bg-gray-600]="searchSelected === 'nome'"
             >
               nome
             </button>
             <button
               class="flex-1 p-2"
-              (click)="searchSelected = 'atividade'"
+              (click)="searchSelected = 'atividade'; ordenarChange()"
               [class.bg-gray-600]="searchSelected === 'atividade'"
             >
               atividade

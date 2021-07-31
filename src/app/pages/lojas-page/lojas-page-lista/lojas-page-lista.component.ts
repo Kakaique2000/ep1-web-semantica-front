@@ -23,6 +23,6 @@ export interface Loja {
   atividade: string;
   nome: string;
   uri: string;
-  fotoUrl: string;
-  descricao: string;
+  fotoUrl?: string;
+  descricao?: string;
 }
