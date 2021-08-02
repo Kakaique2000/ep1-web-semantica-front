@@ -30,7 +30,7 @@
       </div>
       <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
         <div class="flex-shrink-0 flex items-center">
-          <span class="text-white text-lg">Shopping Haroldo</span>
+          <span class="text-white text-lg">Shopping Pérez José</span>
         </div>
         <div class="hidden sm:block sm:ml-6">
           <div class="flex space-x-4">
@@ -39,7 +39,7 @@
 
             <a routerLink="/produtos" #rlaProdutos="routerLinkActive" [ngClass]="{ 'pointer-events-none': rlaProdutos.isActive, 'text-white': rlaProdutos.isActive, 'text-gray-300': !rlaProdutos.isActive   }" [routerLinkActive]="['bg-gray-900', 'text-white']" class="hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Produtos</a>
 
-            <a routerLink="/equipe" #rlaEquipe="routerLinkActive" [ngClass]="{ 'pointer-events-none': rlaEquipe.isActive, 'text-white': rlaEquipe.isActive, 'text-gray-300': !rlaEquipe.isActive   }" [routerLinkActive]="['bg-gray-900', 'text-white']" class="hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">A equipe</a>
+            <a routerLink="/compras" *ngIf="(usuarioLogado$ | async)?.logado" #rlaCompras="routerLinkActive" [ngClass]="{ 'pointer-events-none': rlaCompras.isActive, 'text-white': rlaCompras.isActive, 'text-gray-300': !rlaCompras.isActive   }" [routerLinkActive]="['bg-gray-900', 'text-white']" class="hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">minhas compras</a>
 
           </div>
         </div>

@@ -11,6 +11,8 @@ import { getModelStateObservable, ModelState } from '../store/models/model-state
 })
 export class ProdutoService {
 
+  produtosComprados: Produto[] = [];
+
   constructor(private http: HttpClient) { }
 
   getProdutos(loja: string = '', pesquisa = '', tipo_pesquisa = ''): Observable<ModelState<Produto[]>> {
@@ -24,6 +26,18 @@ export class ProdutoService {
         }
       }
     ).pipe(delay(1000)))
+  }
+
+  getCompras(cliente: string) {
+    return getModelStateObservable(this.http.post<Produto[]>(
+      environment.api + '/compras', {
+        cliente
+      }
+    ).pipe(delay(1000)))
+  }
+
+  fazerCompra(produtos: Produto[]) {
+    this.produtosComprados.push(...produtos);
   }
 
 }

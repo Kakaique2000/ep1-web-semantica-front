@@ -29,6 +29,8 @@ import {MatTabsModule} from '@angular/material/tabs';
 import { CheckoutPopupComponent } from './components/checkout-popup/checkout-popup.component';
 import { LoginComponent } from './components/login/login.component';
 import { CarrinhoComponent } from './components/carrinho/carrinho.component';
+import { MinhasComprasComponent } from './pages/minhas-compras/minhas-compras.component';
+import { CompraPopupComponent } from './components/compra-popup/compra-popup.component';
 
 
 
@@ -45,6 +47,8 @@ import { CarrinhoComponent } from './components/carrinho/carrinho.component';
     LojaPopupComponent,
     CheckoutPopupComponent,
     LoginComponent,
+    MinhasComprasComponent,
+    CompraPopupComponent,
   ],
   imports: [
     BrowserModule,

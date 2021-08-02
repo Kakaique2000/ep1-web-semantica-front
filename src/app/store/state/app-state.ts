@@ -9,9 +9,11 @@ export interface ProdutoCarrinho extends Produto {
 
 export interface Login {
   nome: string;
+  uri: string;
   token: string;
   logado: boolean;
 }
+
 
 export interface AppState {
   carrinho: ProdutoCarrinho[];
@@ -24,6 +26,7 @@ const initialState: AppState = {
     nome: '',
     logado: false,
     token: '',
+    uri: ''
   }
 };
 

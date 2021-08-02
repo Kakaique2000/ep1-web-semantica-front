@@ -5,7 +5,7 @@ import { BehaviorSubject, of, Subject } from 'rxjs';
 import { catchError, delay, map, take, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { DESLOGAR, SET_LOGIN } from '../store/actions/login';
-import { AppState } from '../store/state/app-state';
+import { AppState, Login } from '../store/state/app-state';
 
 @Injectable({
   providedIn: 'root'
@@ -22,20 +22,21 @@ export class LoginService {
 
   doLogin(email: string, password: string) {
     this._isLogging$.next(true);
-    return this.http.post<Cliente>(`${environment.api}/login`, {
+    return this.http.post<Login>(`${environment.api}/login`, {
       email,
       password
     })
       .pipe(
         take(1),
         delay(1000),
-        map(({ token, nome }) => {
+        map(({ token, nome, uri }) => {
           setTimeout(() => {
             this.store.dispatch(SET_LOGIN({
               payload: {
                 nome,
                 token,
-                logado: true
+                logado: true,
+                uri
               }
             }))
           }, 500);
@@ -51,7 +52,3 @@ export class LoginService {
   }
 }
 
-export interface Cliente {
-  nome: string;
-  token: string;
-}

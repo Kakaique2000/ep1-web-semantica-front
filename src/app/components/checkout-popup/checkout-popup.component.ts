@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
-import { AppState } from 'src/app/store/state/app-state';
+import { Produto } from 'src/app/pages/produtos-page-lista/produtos-page-lista.component';
+import { ProdutoService } from 'src/app/services/produto.service';
+import { AppState, ProdutoCarrinho } from 'src/app/store/state/app-state';
+import { CompraPopupComponent } from '../compra-popup/compra-popup.component';
 import { LoginComponent } from '../login/login.component';
 
 @Component({
@@ -15,7 +18,7 @@ export class CheckoutPopupComponent implements OnInit {
   constructor(
     private store: Store<{ app: AppState }>,
     private dialog: MatDialog,
-
+    private produtoService: ProdutoService,
   ) { }
 
   itens$ = this.store.select(({ app }) => app.carrinho);
@@ -31,6 +34,13 @@ export class CheckoutPopupComponent implements OnInit {
 
   abrirLoginPopup() {
     this.dialog.open(LoginComponent)
+  }
+
+  fazerCompra() {
+    this.dialog.open(CompraPopupComponent)
+    this.itens$.subscribe({
+      next: itens => this.produtoService.fazerCompra(itens)
+    })
   }
 
 }

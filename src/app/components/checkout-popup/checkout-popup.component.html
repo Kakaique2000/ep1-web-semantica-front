@@ -13,7 +13,7 @@
     <span class="text-right text-xl font-bold mb-4">
       {{  precoTotal$ | async | currency:'BRL' }}
     </span>
-    <button [disabled]="!(isLogado$ | async)" mat-raised-button color="primary">finalizar</button>
+    <button (click)="fazerCompra()" [disabled]="!(isLogado$ | async)" mat-raised-button color="primary">finalizar</button>
     <span *ngIf="!(isLogado$ | async)">voce não está logado, <strong class="cursor-pointer text-blue-600 hover:text-blue-800 hover:underline" (click)="abrirLoginPopup()">fazer login</strong></span>
   </div>
 </div>

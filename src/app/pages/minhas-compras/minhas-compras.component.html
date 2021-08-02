@@ -1,0 +1,38 @@
+<!-- Navigation ends -->
+<!-- Page title starts -->
+<div class="relative z-10 bg-gray-800 pt-8 pb-16">
+  <div
+    class="
+      container
+      px-6
+      mx-auto
+      flex flex-col
+      lg:flex-row
+      items-start
+      lg:items-center
+      justify-between
+    "
+  >
+    <div class="mt-6 lg:mt-0 w-max">
+      <span class="text-3xl text-white">minhas compras no Shopping Pérez José</span>
+
+    </div>
+  </div>
+</div>
+<!-- Page title ends -->
+<div class="bg-gray-200 pb-10">
+  <div class="container px-6 mx-auto">
+    <div class="relative z-10 w-full">
+      <div class="w-full -mt-8 h-auto">
+        <div *ngIf="(itemsComprados$ | async)?.loading" class="flex justify-center">
+          <div class="rounded-full p-4 bg-white drop-shadow">
+            <mat-spinner diameter="70"></mat-spinner>
+          </div>
+        </div>
+        <article class="rounded border border-gray-300 bg-white mb-2 shadow p-4 block h-full" *ngFor="let item of (itemsComprados$ | async)?.data!">
+          <span>{{ item.nome }} - <strong>{{ item.preco | currency:'BRL'}}</strong></span>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>

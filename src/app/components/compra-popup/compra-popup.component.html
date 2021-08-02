@@ -1,0 +1,7 @@
+<div class="flex justify-center flex-col" *ngIf="!mostrarSucesso">
+  <span class="text-lg">efetuando compra...</span><br>
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="mostrarSucesso">
+  <span class="text-lg">compra efetuada com sucesso!</span>
+</div>
