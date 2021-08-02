@@ -30,19 +30,19 @@ export class LoginService {
         take(1),
         delay(1000),
         map(({ token, nome }) => {
-            setTimeout(() => {
-              this.store.dispatch(SET_LOGIN({
-                payload: {
-                  nome,
-                  token,
-                  logado: true
-                }
-              }))
-            }, 500);
-          return true;
-        }),
-        catchError(() => of(false)),
-        tap(() => this._isLogging$.next(false))
+          setTimeout(() => {
+            this.store.dispatch(SET_LOGIN({
+              payload: {
+                nome,
+                token,
+                logado: true
+              }
+            }))
+          }, 500);
+        return true;
+      }),
+        catchError(() => of(false).pipe(delay(1000))),
+        tap(() => this._isLogging$.next(false)),
     )
   }
 

@@ -15,6 +15,7 @@
     </mat-form-field>
   </div>
 
+  <span *ngIf="erroLogin" class="text-red-600 my-2">e-mail ou senha inválidos</span>
   <button *ngIf="!(isLogging$ | async)" (click)="login()" [disabled]="!email || !senha" mat-raised-button color="primary">Logar</button>
   <mat-spinner diameter="40" *ngIf="isLogging$ | async"></mat-spinner>
 </main>
@@ -28,6 +29,4 @@
     <span>Você está logado com sucesso, para deslogar, <strong (click)="deslogar()" class="font-bold text-blue-600 cursor-pointer">clique aqui</strong></span>
   </div>
 
-  <button *ngIf="!(isLogging$ | async)" (click)="login()" [disabled]="!email || !senha" mat-raised-button color="primary">Logar</button>
-  <mat-spinner diameter="40" *ngIf="isLogging$ | async"></mat-spinner>
 </main>

@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   email = '';
   senha = '';
+  erroLogin = false;
 
   isLogging$ = this.loginService.isLogging$;
 
@@ -30,15 +31,18 @@ export class LoginComponent implements OnInit {
   login() {
     this.loginService.doLogin(this.email, this.senha)
       .subscribe({
-        next: () => this.dialogRef.close()
+        next: (ok) => {
+          if (ok) {
+            this.dialogRef.close()
+          } else {
+            this.erroLogin = true;
+          }
+        }
       })
   }
 
   deslogar() {
-    this.dialogRef.close();
-    setTimeout(() => {
       this.loginService.deslogar();
-    }, 500);
   }
 
   ngOnInit(): void {
