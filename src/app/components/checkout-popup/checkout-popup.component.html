@@ -4,7 +4,7 @@
   </div>
   <div class="carrinho p-4 py-8">
     <article class="flex justify-between" *ngFor="let item of itens$ | async">
-      <span class="text-lg">{{ item.quantidade || 1 }}x {{ item.nome }}</span>
+      <span class="text-lg">{{ item.quantidade || 1 }} x {{ item.nome }}</span>
       <span class="text-lg font-bold">{{ ((item.quantidade || 1) * item.preco) | currency:'BRL' }}</span>
     </article>
   </div>
@@ -13,6 +13,7 @@
     <span class="text-right text-xl font-bold mb-4">
       {{  precoTotal$ | async | currency:'BRL' }}
     </span>
-    <button mat-raised-button color="primary">finalizar</button>
+    <button [disabled]="!(isLogado$ | async)" mat-raised-button color="primary">finalizar</button>
+    <span *ngIf="!(isLogado$ | async)">voce não está logado, <strong class="cursor-pointer text-blue-600 hover:text-blue-800 hover:underline" (click)="abrirLoginPopup()">fazer login</strong></span>
   </div>
 </div>

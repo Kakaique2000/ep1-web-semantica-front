@@ -7,7 +7,7 @@
   grid-template-areas:
     "header header header"
     "carrinho carrinho carrinho"
-    ". . acao";
+    ". acao acao";
 }
 
 .header { grid-area: header; }

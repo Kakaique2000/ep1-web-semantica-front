@@ -1,0 +1,20 @@
+
+<main class="flex flex-col justify-between items-center">
+  <span class="text-lg">
+    Olá! faça o login para fazer compras
+  </span>
+
+  <div>
+    <mat-form-field class="example-form-field w-96  block" appearance="standard">
+      <mat-label>e-mail</mat-label>
+      <input [(ngModel)]="email" matInput type="email" />
+    </mat-form-field> <br>
+    <mat-form-field class="example-form-field w-96  block" appearance="standard">
+      <mat-label>senha</mat-label>
+      <input [(ngModel)]="senha" matInput type="password" />
+    </mat-form-field>
+  </div>
+
+  <button *ngIf="!(isLogging$ | async)" (click)="login()" [disabled]="!email || !senha" mat-raised-button color="primary">Logar</button>
+  <mat-spinner diameter="40" *ngIf="isLogging$ | async"></mat-spinner>
+</main>

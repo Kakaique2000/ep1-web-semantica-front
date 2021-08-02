@@ -19,7 +19,6 @@ import { LojasPageComponent } from './pages/lojas-page/lojas-page.component';
 import { LojasPageListaComponent } from './pages/lojas-page/lojas-page-lista/lojas-page-lista.component';
 import { ProdutosPageComponent } from './pages/produtos-page/produtos-page.component';
 import { ProdutosPageListaComponent } from './pages/produtos-page-lista/produtos-page-lista.component';
-import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 import { appReducer } from './store/state/app-state';
 import { FormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -28,6 +27,8 @@ import { LojaPopupComponent } from './components/loja-popup/loja-popup.component
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatTabsModule} from '@angular/material/tabs';
 import { CheckoutPopupComponent } from './components/checkout-popup/checkout-popup.component';
+import { LoginComponent } from './components/login/login.component';
+import { CarrinhoComponent } from './components/carrinho/carrinho.component';
 
 
 
@@ -43,6 +44,7 @@ import { CheckoutPopupComponent } from './components/checkout-popup/checkout-pop
     CarrinhoComponent,
     LojaPopupComponent,
     CheckoutPopupComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,17 +1,30 @@
 import { createReducer, on } from '@ngrx/store';
 import { Produto } from 'src/app/pages/produtos-page-lista/produtos-page-lista.component';
 import * as carrinho from '../actions/carrinho';
+import * as login from '../actions/login';
 
 export interface ProdutoCarrinho extends Produto {
   quantidade?: number;
 }
 
+export interface Login {
+  nome: string;
+  token: string;
+  logado: boolean;
+}
+
 export interface AppState {
-     carrinho: ProdutoCarrinho[]
+  carrinho: ProdutoCarrinho[];
+  login: Login;
 };
 
 const initialState: AppState = {
-    carrinho: []
+  carrinho: [],
+  login: {
+    nome: '',
+    logado: false,
+    token: '',
+  }
 };
 
 export const appReducer = createReducer(
@@ -32,6 +45,14 @@ export const appReducer = createReducer(
     carrinho.LIMPAR,
     (state) => ({ ...state, carrinho: [] }),
   ),
+  on(
+    login.SET_LOGIN,
+    (state, { payload }) => ({ ...state, login: payload})
+  ),
+  on(
+    login.DESLOGAR,
+    (state,) => ({ ...state, login: initialState.login})
+  )
 );
 
 
