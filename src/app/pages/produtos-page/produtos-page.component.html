@@ -18,6 +18,8 @@
       <div class="flex mt-3 items-end flex-wrap">
         <input
           placeholder="pesquise seu produto essencial"
+          (keyup.enter)="pesquisarProduto()"
+          [(ngModel)]="pesquisa"
           class="
             inline
             w-80
@@ -33,7 +35,7 @@
           type="text"
         />
         <section>
-          <button
+          <button (click)="pesquisarProduto()"
           style="height: 42px;"
             class="flex-1 mr-6 border border-l-0 rounded rounded-l-none mt-4 active:bg-black hover:bg-gray-600 p-2 px-3 border-gray-500
             text-white"
@@ -62,8 +64,8 @@
             </button>
             <button
               class="flex-1 p-2"
-              (click)="searchSelected = 'categoria'"
-              [class.bg-gray-600]="searchSelected === 'categoria'"
+              (click)="searchSelected = 'atividade'"
+              [class.bg-gray-600]="searchSelected === 'atividade'"
             >
               categoria
             </button>
@@ -85,6 +87,3 @@
   </div>
 </div>
 
-<div class="fixed z-10 right-4 bottom-4">
-  <app-carrinho></app-carrinho>
-</div>

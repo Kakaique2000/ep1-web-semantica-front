@@ -10,9 +10,15 @@ export class ProdutosPageComponent implements OnInit {
 
   constructor(private produtoService: ProdutoService) { }
 
-  searchSelected: 'nome' | 'categoria' = 'nome'
+  searchSelected: 'nome' | 'atividade' = 'nome'
+
+  pesquisa = '';
 
   produtos$ = this.produtoService.getProdutos();
+
+  pesquisarProduto() {
+    this.produtos$ = this.produtoService.getProdutos('', this.pesquisa, this.searchSelected);
+  }
 
   ngOnInit(): void {
   }

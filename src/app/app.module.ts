@@ -24,6 +24,10 @@ import { appReducer } from './store/state/app-state';
 import { FormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { LojaPopupComponent } from './components/loja-popup/loja-popup.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import {MatTabsModule} from '@angular/material/tabs';
+import { CheckoutPopupComponent } from './components/checkout-popup/checkout-popup.component';
 
 
 
@@ -37,6 +41,8 @@ import { environment } from '../environments/environment';
     ProdutosPageComponent,
     ProdutosPageListaComponent,
     CarrinhoComponent,
+    LojaPopupComponent,
+    CheckoutPopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +53,8 @@ import { environment } from '../environments/environment';
     MatCardModule,
     FormsModule,
     MatInputModule,
+    MatDialogModule,
+    MatTabsModule,
     MatIconModule,
     HttpClientModule,
     MatProgressSpinnerModule,

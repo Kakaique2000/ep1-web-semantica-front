@@ -1,0 +1,21 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: 0.8fr 1.5fr 0.7fr;
+  grid-template-rows: 6em 1fr 12em;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "header header header"
+    "carrinho carrinho carrinho"
+    ". . acao";
+}
+
+.header { grid-area: header; }
+
+.acao {
+   grid-area: acao;
+   align-self: end;
+   justify-self: end
+}
+
+.carrinho { grid-area: carrinho; }

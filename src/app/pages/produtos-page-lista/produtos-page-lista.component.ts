@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
+import { LojaPopupComponent } from 'src/app/components/loja-popup/loja-popup.component';
 import { ADICIONAR_ITEM } from 'src/app/store/actions/carrinho';
 import { ModelState } from 'src/app/store/models/model-state';
-import { AppState } from 'src/app/store/state/app-state';
+import { AppState, ProdutoCarrinho } from 'src/app/store/state/app-state';
 
 @Component({
   selector: 'app-produtos-page-lista',
@@ -12,7 +14,7 @@ import { AppState } from 'src/app/store/state/app-state';
 })
 export class ProdutosPageListaComponent implements OnInit {
 
-  constructor(private store: Store<{ app: AppState }>) { }
+  constructor(private store: Store<{ app: AppState }>, private dialog: MatDialog) { }
 
   @Input()
   produtos$: Observable<ModelState<Produto[]>> = of(new ModelState(false));
@@ -24,13 +26,32 @@ export class ProdutosPageListaComponent implements OnInit {
     this.store.dispatch(ADICIONAR_ITEM({ payload: produto }))
   }
 
+  abrirLojaPopup(produto: ProdutoCarrinho) {
+
+      this.dialog.open(LojaPopupComponent, {
+        height: '800px',
+        width: '1000px',
+        data: {
+          loja: {
+            atividade: produto.lojaAtividade,
+            nome: produto.lojaLabel,
+            uri: produto.loja,
+          },
+        }
+      })
+  }
+
 }
 
 export interface Produto {
-  categoria: string;
-  nome: string;
-  uri: string;
-  preco: number;
-  fotoUrl: string;
-  descricao: string;
+  nome:          string;
+  loja:          string;
+  lojaLabel:     string;
+  lojaAtividade: string;
+  uri:           string;
+  fotoUrl:       string;
+  codigo:        number;
+  preco:         number;
+  qtd:           number;
 }
+

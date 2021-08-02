@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ModelState } from 'src/app/store/models/model-state';
+import { MatDialog } from '@angular/material/dialog';
+import { LojaPopupComponent } from 'src/app/components/loja-popup/loja-popup.component';
+
 
 @Component({
   selector: 'app-lojas-page-lista',
@@ -9,12 +12,24 @@ import { ModelState } from 'src/app/store/models/model-state';
 })
 export class LojasPageListaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   @Input()
   lojas$: Observable<ModelState<Loja[]>> = of(new ModelState(false));
 
   ngOnInit(): void {
+  }
+
+  abrirPopupLoja(loja: Loja) {
+    console.log(loja);
+
+    this.dialog.open(LojaPopupComponent, {
+      height: '800px',
+      width: '1000px',
+      data: {
+        loja,
+      }
+    })
   }
 
 }

@@ -1,10 +1,12 @@
 import { AotCompiler } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs/operators';
 import { Produto } from 'src/app/pages/produtos-page-lista/produtos-page-lista.component';
 import { ATUALIZAR_ITEM, REMOVER_ITEM } from 'src/app/store/actions/carrinho';
-import { AppState } from 'src/app/store/state/app-state';
+import { AppState, ProdutoCarrinho } from 'src/app/store/state/app-state';
+import { CheckoutPopupComponent } from '../checkout-popup/checkout-popup.component';
 
 @Component({
   selector: 'app-carrinho',
@@ -13,7 +15,7 @@ import { AppState } from 'src/app/store/state/app-state';
 })
 export class CarrinhoComponent implements OnInit {
 
-  constructor(public store: Store<{ app: AppState }>) { }
+  constructor(public store: Store<{ app: AppState }>, private dialog: MatDialog) { }
 
   mostrarCarrinho = true;
 
@@ -22,6 +24,10 @@ export class CarrinhoComponent implements OnInit {
   precoTotal$ = this.itens$.pipe(
     map(carrinho => carrinho.reduce((acc, curr) => acc+= (curr.quantidade ?? 1)*curr.preco , 0))
   )
+
+  getQuantidadeTotal(itens: ProdutoCarrinho[]) {
+    return itens.reduce((acc, cur) => acc += (cur.quantidade || 1), 0)
+  }
 
   ngOnInit(): void {
   }
@@ -36,6 +42,13 @@ export class CarrinhoComponent implements OnInit {
       return;
     }
     this.store.dispatch(ATUALIZAR_ITEM({ payload: valor, id: uri }))
+  }
+
+  finalizarCompraClick() {
+    this.dialog.open(CheckoutPopupComponent, {
+      height: '600px',
+      width: '600px',
+    })
   }
 
 

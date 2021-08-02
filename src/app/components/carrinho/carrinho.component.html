@@ -1,6 +1,6 @@
 <div *ngIf="itens$ | async as itens" class="bg-white rounded shadow-2xl border border-gray-300">
   <header class="w-full flex justify-between p-3">
-    <span><strong>Carrinho</strong><br> Seus itens adicionados ({{ itens.length }})</span>
+    <span><strong>Carrinho</strong><br> Seus itens adicionados ({{ getQuantidadeTotal(itens) }})</span>
     <mat-icon (click)="mostrarCarrinho = !mostrarCarrinho" *ngIf="itens.length" class="cursor-pointer">{{ mostrarCarrinho ? 'expand_more' : 'expand_less' }}</mat-icon>
   </header>
   <ul *ngIf="mostrarCarrinho" class="overflow-y-auto max-h-60">
@@ -23,7 +23,7 @@
   </ul>
   <footer *ngIf="itens.length">
     <div class="flex items-center justify-between p-3 border-t border-gray-100">
-      <span class="underline text-blue-700 hover:text-blue-900 cursor-pointer">finalizar compra</span>
+      <span (click)="finalizarCompraClick()" class="underline text-blue-700 hover:text-blue-900 cursor-pointer">finalizar compra</span>
       <span class="text-xl font-bold">Total: {{ precoTotal$ | async | currency:'BRL' }} </span>
     </div>
 </footer>

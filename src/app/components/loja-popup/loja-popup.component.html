@@ -1,0 +1,52 @@
+<main *ngIf="data.loja as loja"  class="flex flex-col">
+  <header class="flex items-center">
+    <img class="p-4 h-40 rounded-full w-40" onerror="this.src = 'assets/shop-placeholder.jpg'" [src]="loja.fotoUrl" [alt]="loja.nome"  />
+    <div class="p-4 flex flex-col mb-4">
+      <span class="text-3xl text-bold">{{ loja.nome }}</span
+      ><span class="text-xl">{{ loja.atividade }}</span>
+    </div>
+  </header>
+  <section class="flex-1 ">
+    <mat-tab-group class="-mx-6" mat-align-tabs="start">
+
+      <mat-tab label="Produtos">
+        <div class="p-4  bg-gray-200">
+          <app-produtos-page-lista [produtos$]="produtos$"></app-produtos-page-lista>
+        </div>
+      </mat-tab>
+
+      <mat-tab label="Informações">
+        <div class="p-4 flex flex-wrap">
+
+          <div class="p-4 ml-4 mt-4 drop-shadow-sm border rounded ">
+            <span class="font-bold">
+              nome
+            </span> <br>
+            <span>
+              {{ loja.nome }}
+            </span>
+          </div>
+          <div class="p-4 ml-4 mt-4 drop-shadow-sm border rounded ">
+            <span class="font-bold">
+              atividade
+            </span> <br>
+            <span>
+              {{ loja.atividade }}
+            </span>
+          </div>
+          <div class="p-4 ml-4 mt-4 drop-shadow-sm border rounded ">
+            <span class="font-bold">
+              Website
+            </span> <br>
+            <a [href]="loja.uri">
+              {{ loja.uri }}
+            </a>
+          </div>
+        </div>
+
+      </mat-tab>
+
+    </mat-tab-group>
+
+  </section>
+</main>

@@ -1,0 +1,18 @@
+<div class="grid-container h-full">
+  <div class="header p-4 border-b border-gray-200">
+    <span class="text-3xl">Seu carrinho de compras</span>
+  </div>
+  <div class="carrinho p-4 py-8">
+    <article class="flex justify-between" *ngFor="let item of itens$ | async">
+      <span class="text-lg">{{ item.quantidade || 1 }}x {{ item.nome }}</span>
+      <span class="text-lg font-bold">{{ ((item.quantidade || 1) * item.preco) | currency:'BRL' }}</span>
+    </article>
+  </div>
+  <div class="acao flex flex-col justify-end">
+    <span class="text-right text-lg">total</span>
+    <span class="text-right text-xl font-bold mb-4">
+      {{  precoTotal$ | async | currency:'BRL' }}
+    </span>
+    <button mat-raised-button color="primary">finalizar</button>
+  </div>
+</div>
