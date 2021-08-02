@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../components/login/login.component';
 
 @Component({
   selector: 'app-toolbar',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  abrirLoginPopup() {
+    this.dialog.open(LoginComponent)
   }
 
 }

@@ -4,7 +4,7 @@ import { Store } from '@ngrx/store';
 import { BehaviorSubject, of, Subject } from 'rxjs';
 import { catchError, delay, map, take, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { SET_LOGIN } from '../store/actions/login';
+import { DESLOGAR, SET_LOGIN } from '../store/actions/login';
 import { AppState } from '../store/state/app-state';
 
 @Injectable({
@@ -30,18 +30,24 @@ export class LoginService {
         take(1),
         delay(1000),
         map(({ token, nome }) => {
-            this.store.dispatch(SET_LOGIN({
-              payload: {
-                nome,
-                token,
-                logado: true
-              }
-            }))
+            setTimeout(() => {
+              this.store.dispatch(SET_LOGIN({
+                payload: {
+                  nome,
+                  token,
+                  logado: true
+                }
+              }))
+            }, 500);
           return true;
         }),
         catchError(() => of(false)),
         tap(() => this._isLogging$.next(false))
     )
+  }
+
+  deslogar() {
+    this.store.dispatch(DESLOGAR());
   }
 }
 

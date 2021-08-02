@@ -1,5 +1,5 @@
 
-<main class="flex flex-col justify-between items-center">
+<main *ngIf="!(logado$ | async)" class="flex flex-col justify-between items-center">
   <span class="text-lg">
     Olá! faça o login para fazer compras
   </span>
@@ -13,6 +13,19 @@
       <mat-label>senha</mat-label>
       <input [(ngModel)]="senha" matInput type="password" />
     </mat-form-field>
+  </div>
+
+  <button *ngIf="!(isLogging$ | async)" (click)="login()" [disabled]="!email || !senha" mat-raised-button color="primary">Logar</button>
+  <mat-spinner diameter="40" *ngIf="isLogging$ | async"></mat-spinner>
+</main>
+
+<main *ngIf="logado$ | async" class="flex flex-col justify-between items-center">
+  <span class="text-lg">
+    Olá! {{ (clienteLogado$ | async)?.nome }}
+  </span>
+
+  <div class="p-4">
+    <span>Você está logado com sucesso, para deslogar, <strong (click)="deslogar()" class="font-bold text-blue-600 cursor-pointer">clique aqui</strong></span>
   </div>
 
   <button *ngIf="!(isLogging$ | async)" (click)="login()" [disabled]="!email || !senha" mat-raised-button color="primary">Logar</button>
